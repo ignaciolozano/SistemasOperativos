@@ -61,6 +61,9 @@ public class VentanaInformacion2 extends ActionBarActivity {
     }
 
 
+
+
+
     public void recuperar() {
         String recupera = getIntent().getStringExtra("tipoS");
 
