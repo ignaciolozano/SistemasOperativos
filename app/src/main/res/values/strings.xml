@@ -5,4 +5,5 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_ventana_informcion1">VentanaInformcion1</string>
     <string name="title_activity_ventana_informacion2">VentanaInformacion2</string>
+    <string name="title_activity_activity_acerca">ActivityAcerca</string>
 </resources>

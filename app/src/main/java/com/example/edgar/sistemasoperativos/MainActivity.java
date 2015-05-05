@@ -1,6 +1,7 @@
 package com.example.edgar.sistemasoperativos;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,6 +22,7 @@ public class MainActivity extends ActionBarActivity  {
     Spinner spinner1;
     Button btn;
     EditText ed;
+    private MediaPlayer wxp;
 
    ToggleButton toggle;
    // private ToggleButton toggleButton1, toggleButton2;
@@ -38,15 +40,17 @@ public class MainActivity extends ActionBarActivity  {
                 if (isChecked) {
 
                     spinner1 = (Spinner) findViewById(R.id.spinner1);
-                    String []opciones={"Lista de Sistemas Op.","Windows","Linux","SOX"};
+                    String []opciones={"Lista de Sistemas Op.","Windows","Linux","OSX"};
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item, opciones);
                     spinner1.setAdapter(adapter);
 
                 } else {
-                    spinner1 = (Spinner) findViewById(R.id.spinner1);
-                    String []opciones={"Lista de Opciones","Android", "windows", "OS"};
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item, opciones);
-                    spinner1.setAdapter(adapter);
+
+                        spinner1 = (Spinner) findViewById(R.id.spinner1);
+                        String[] opciones = {"Lista de Moviles", "Android", "Windows Phone", "Firefox OS", "iOS"};
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, opciones);
+                        spinner1.setAdapter(adapter);
+
                 }
             }
         });
@@ -77,13 +81,27 @@ public class MainActivity extends ActionBarActivity  {
 
 
         }
+        if (id == R.id.action_Acerca) {
+            acerca();
+            return true;
+
+
+
+        }
+        if (id == R.id.action_Salir) {
+            Intent salida=new Intent( Intent.ACTION_MAIN); //Llamando a la activity principal
+            finish();
+            return true;
+
+
+
+        }
         if(id == R.id.action_VersionOS)
-        {
+        { ///Sistemas Operativos //////////////////////////////////////////
             String selec=spinner1.getSelectedItem().toString();
             if(selec.equals("Windows"))
             {
-
-            windows();
+               windows();
 
             }
             else
@@ -96,16 +114,23 @@ public class MainActivity extends ActionBarActivity  {
                     {
                       osx();
                     }
-                        else
+                        else ////Sistemas Moviles//////////////////////////////
                             if (selec.equals("Android"));
                              {
                                android();
                              }
-
-
-
-
-
+                             if(selec.equals("iOS"))
+                                    {
+                                    iOS();
+                                      }
+                                        else if (selec.equals("Windows Phone"))
+                                        {
+                                         windowsphon();
+                                        }
+                                        else if (selec.equals("Firefox OS"))
+                                        {
+                                           firefoxos();
+                                        }
 
 
         }
@@ -113,48 +138,87 @@ public class MainActivity extends ActionBarActivity  {
         return super.onOptionsItemSelected(item);
     }
 
+public void acerca(){
+    Intent i = new Intent(this, ActivityAcerca.class );
+
+    startActivity(i);
+}
 
 
 
     public void windows(){
-        String textoWindow;
-        String textoDescripcion;
-
+        String nom;
+        String tipoSistema;
         Intent i = new Intent(this, VentanaInformcion1.class );
-        textoWindow = "Windows";
-        textoDescripcion = "Windows Sistema Operativo para computadoras";
-        i.putExtra("textoWindows", textoWindow);
-        i.putExtra("textoDescripcion", textoDescripcion);
+        nom = "Windows";
+        tipoSistema = "Windows";
+        i.putExtra("nom", nom);
+        i.putExtra("tipoSistema", tipoSistema);
         startActivity(i);
-
-
-
-
     }
-
-    public void linux(){
-        String textoLinux;
-        textoLinux = "Linux";
+     public void linux(){
+        String nom;
+        String tipoSistema;
+        nom = "Linux";
+        tipoSistema = "Linux";
         Intent i = new Intent(this, VentanaInformcion1.class );
-        i.putExtra("textoWindows", textoLinux);
+        i.putExtra("nom", nom);
+        i.putExtra("tipoSistema", tipoSistema);
         startActivity(i);
-        //Ventana Linux
-
     }
     public void osx(){
-        String textoOSX;
-        textoOSX = "OSX";
+        String nom;
+        String tipoSistema;
+        nom = "OSX";
+        tipoSistema = "OSX";
         Intent i = new Intent(this, VentanaInformcion1.class );
-        i.putExtra("textoOSX", textoOSX);
+        i.putExtra("nom", nom);
+        i.putExtra("tipoSistema", tipoSistema);
         startActivity(i);
 
     }
-    public void android(){
-        String textoAndroid;
-        textoAndroid = "Android";
-        Intent i = new Intent(this, VentanaInformcion1.class );
-        i.putExtra("textoAndroid", textoAndroid);
+    public void android() {
+        String nom;
+        String tipoSistema;
+        nom = "Android";
+        tipoSistema = "Android";
+        Intent i = new Intent(this, VentanaInformcion1.class);
+        i.putExtra("nom", nom);i.putExtra("tipoSistema", tipoSistema);
         startActivity(i);
+    }
+    public void windowsphon()
+    {
+        String nom;
+        String tipoSistema;
+        Intent i = new Intent(this, VentanaInformcion1.class );
+        nom = "Windows Phone";
+        tipoSistema= "Windows Phone";
+        i.putExtra("nom", nom);
+        i.putExtra("tipoSistema", tipoSistema);
+        startActivity(i);
+    }
 
+
+    public void iOS()
+    {
+        String nom;
+        String tipoSistema;
+        Intent i = new Intent(this, VentanaInformcion1.class );
+        nom = "iOS";
+        tipoSistema = "iOS";
+        i.putExtra("nom", nom);
+        i.putExtra("tipoSistema", tipoSistema);
+        startActivity(i);
+    }
+    public void firefoxos()
+    {
+        String nom;
+        String tipoSistema;
+        Intent i = new Intent(this, VentanaInformcion1.class );
+        nom = "Firefox OS";
+        tipoSistema= "Firefox OS";
+        i.putExtra("nom", nom);
+        i.putExtra("tipoSistema", tipoSistema);
+        startActivity(i);
     }
 }

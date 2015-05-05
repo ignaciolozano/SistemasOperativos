@@ -24,6 +24,10 @@
             android:name=".VentanaInformacion2"
             android:label="@string/title_activity_ventana_informacion2" >
         </activity>
+        <activity
+            android:name=".ActivityAcerca"
+            android:label="@string/title_activity_activity_acerca" >
+        </activity>
     </application>
 
 </manifest>

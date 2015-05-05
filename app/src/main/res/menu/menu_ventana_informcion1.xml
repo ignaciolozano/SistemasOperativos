@@ -9,7 +9,11 @@
         app:showAsAction="never" />
 
     <item android:id="@+id/action_verciones"
-        android:title="vercion"
+        android:title="Version"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_Regresar"
+        android:title="Regresar"
         android:orderInCategory="100"
         app:showAsAction="never" />
 
